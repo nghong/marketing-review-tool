@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <!-- Creates the navbar -->
+  <nav class="navbar navbar-default navbar-inverse">
+    
+    <!-- This creates the mechanism for the collapse button -->
+    <button type="button" class="navbar-toggle">
+    
+    <!-- This controls the number of lines in the image when the nav collapse -->
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
+    <!-- This is the brand on the left-hand side. -->
+    <a class="navbar-brand" href="/#"> Marketing Review Tool</a>
+    <div class="collapse navbar-collapse">
+      <!-- LOGIN FORM -->
+      <form class="navbar-form navbar-right">
+        <!-- E M A I L -->
+        <div class="form-group">
+          <input type="text" placeholder="Email" name="email" class="form-control">
+        </div>
+        <!-- P A S S W O R D -->
+        <div class="form-group">
+          <input type="password" placeholder="Password" name="password" class="form-control">
+        </div>
+        <!-- S U B M I T -->
+        <button type="submit" class="btn btn-success">
+        <span>Sign in</span>
+        </button>
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+      </form>
+    </div>
+  </nav>
+</div>
