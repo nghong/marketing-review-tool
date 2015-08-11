@@ -3,9 +3,11 @@
 var assert = require('assert')
 var request = require('supertest')
 
-describe('StaticPageController', function () {
-  describe('#index', function (done) {
-    it('should have the text Marketing Review Tool', function () {
+describe('StaticPage Controller', function () {
+
+  describe('#index', function () {
+
+    it('should have the text Marketing Review Tool', function (done) {
       request(sails.hooks.http.app)
         .get('/')
         .expect(function (res) {

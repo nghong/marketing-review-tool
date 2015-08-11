@@ -12,14 +12,14 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">responses/badRequest.js</span></h1>
     <h2>
-        Statements: <span class="metric">5.88% <small>(1 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">0% <small>(0 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">5.88% <small>(1 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(17 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(12 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(2 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(17 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric">16 statements, 2 functions, 12 branches</span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">responses/</a> &#187; badRequest.js</div>
 </div>
@@ -109,46 +109,46 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,50 +169,50 @@
  * );
  * ```
  */
-&nbsp;
-module.exports = <span class="fstat-no" title="function not covered" >function badRequest(data, options) {</span>
+/* istanbul ignore next */
+module.exports = <span class="fstat-skip" title="function not covered" >function badRequest(data, options) {</span>
 &nbsp;
   // Get access to `req`, `res`, &amp; `sails`
-<span class="cstat-no" title="statement not covered" >  var req = this.req;</span>
-<span class="cstat-no" title="statement not covered" >  var res = this.res;</span>
-<span class="cstat-no" title="statement not covered" >  var sails = req._sails;</span>
+<span class="cstat-skip" title="statement not covered" >  var req = this.req;</span>
+<span class="cstat-skip" title="statement not covered" >  var res = this.res;</span>
+<span class="cstat-skip" title="statement not covered" >  var sails = req._sails;</span>
 &nbsp;
   // Set status code
-<span class="cstat-no" title="statement not covered" >  res.status(400);</span>
+<span class="cstat-skip" title="statement not covered" >  res.status(400);</span>
 &nbsp;
   // Log error to console
-<span class="cstat-no" title="statement not covered" >  if (data !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >    sails.log.verbose('Sending 400 ("Bad Request") response: \n',data);</span>
+<span class="cstat-skip" title="statement not covered" >  if (data !== undefined) {</span>
+<span class="cstat-skip" title="statement not covered" >    sails.log.verbose('Sending 400 ("Bad Request") response: \n',data);</span>
   }
-  else <span class="cstat-no" title="statement not covered" >sails.log.verbose('Sending 400 ("Bad Request") response');</span>
+  else <span class="cstat-skip" title="statement not covered" >sails.log.verbose('Sending 400 ("Bad Request") response');</span>
 &nbsp;
   // Only include errors in response if application environment
   // is not set to 'production'.  In production, we shouldn't
   // send back any identifying information about errors.
-<span class="cstat-no" title="statement not covered" >  if (sails.config.environment === 'production') {</span>
-<span class="cstat-no" title="statement not covered" >    data = undefined;</span>
+<span class="cstat-skip" title="statement not covered" >  if (sails.config.environment === 'production') {</span>
+<span class="cstat-skip" title="statement not covered" >    data = undefined;</span>
   }
 &nbsp;
   // If the user-agent wants JSON, always respond with JSON
-<span class="cstat-no" title="statement not covered" >  if (req.wantsJSON) {</span>
-<span class="cstat-no" title="statement not covered" >    return res.jsonx(data);</span>
+<span class="cstat-skip" title="statement not covered" >  if (req.wantsJSON) {</span>
+<span class="cstat-skip" title="statement not covered" >    return res.jsonx(data);</span>
   }
 &nbsp;
   // If second argument is a string, we take that to mean it refers to a view.
   // If it was omitted, use an empty object (`{}`)
-<span class="cstat-no" title="statement not covered" >  options = (typeof options === 'string') ? { view: options } : options || {};</span>
+<span class="cstat-skip" title="statement not covered" >  options = (typeof options === 'string') ? { view: options } : options || {};</span>
 &nbsp;
   // If a view was provided in options, serve it.
   // Otherwise try to guess an appropriate view, or if that doesn't
   // work, just send JSON.
-<span class="cstat-no" title="statement not covered" >  if (options.view) {</span>
-<span class="cstat-no" title="statement not covered" >    return res.view(options.view, { data: data });</span>
+<span class="cstat-skip" title="statement not covered" >  if (options.view) {</span>
+<span class="cstat-skip" title="statement not covered" >    return res.view(options.view, { data: data });</span>
   }
 &nbsp;
   // If no second argument provided, try to serve the implied view,
   // but fall back to sending JSON(P) if no view can be inferred.
-  else <span class="cstat-no" title="statement not covered" >return res.guessView({ data: data }, <span class="fstat-no" title="function not covered" >function couldNotGuessView () {</span></span>
-<span class="cstat-no" title="statement not covered" >    return res.jsonx(data);</span>
+  else <span class="cstat-skip" title="statement not covered" >return res.guessView({ data: data }, <span class="fstat-skip" title="function not covered" >function couldNotGuessView () {</span></span>
+<span class="cstat-skip" title="statement not covered" >    return res.jsonx(data);</span>
   });
 &nbsp;
 };
@@ -222,7 +222,7 @@ module.exports = <span class="fstat-no" title="function not covered" >function b
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 10 2015 17:14:40 GMT+0700 (ICT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 11 2015 16:44:17 GMT+0700 (ICT)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>

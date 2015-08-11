@@ -14,7 +14,7 @@
  * );
  * ```
  */
-
+/* istanbul ignore next */
 module.exports = function badRequest(data, options) {
 
   // Get access to `req`, `res`, & `sails`

@@ -11,7 +11,7 @@
  * return res.forbidden('Access denied.');
  * ```
  */
-
+/* istanbul ignore next */
 module.exports = function forbidden (data, options) {
 
   // Get access to `req`, `res`, & `sails`

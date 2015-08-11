@@ -7,7 +7,8 @@
 
 module.exports = {
   index: function (req, res) {
-    res.view('homepage')
+    /* istanbul ignore next */
+    return res.view('homepage')
   }
 }
 
