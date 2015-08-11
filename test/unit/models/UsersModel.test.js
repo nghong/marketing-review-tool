@@ -1,4 +1,4 @@
-var assert = require('assert')
+var expect = require('chai').expect
 
 describe.only('Users Model', function () {
   var userSample = {
@@ -24,7 +24,7 @@ describe.only('Users Model', function () {
         email: 'foobar@example.com',
         password: 'foobar'
       }).exec(function (err) {
-        assert.ok(err)
+        expect(err).to.exist
         done()
       })
     })
@@ -35,7 +35,7 @@ describe.only('Users Model', function () {
         email: '',
         password: 'foobar'
       }).exec(function (err) {
-        assert.ok(err)
+        expect(err).to.exist
         done()
       })
     })
@@ -46,7 +46,7 @@ describe.only('Users Model', function () {
         email: 'foobar@example.com',
         password: ''
       }).exec(function (err) {
-        assert.ok(err)
+        expect(err).to.exist
         done()
       })
     })
@@ -54,7 +54,7 @@ describe.only('Users Model', function () {
     it('its password should be encrypted', function (done) {
       Users.create(userSample).exec(function (err, user) {
         logError(err)
-        assert.notStrictEqual(userSample.password, user.password)
+        expect(user.password).to.not.equal(userSample.password)
         done()
       })
     })
@@ -70,21 +70,21 @@ describe.only('Users Model', function () {
       invalidEmails.forEach(function (invalidEmail) {
         userWithInvalidEmail.email = invalidEmail
         Users.create(userWithInvalidEmail).exec(function (err) {
-          assert.ok(err)
+          expect(err).to.exist
         })
       })
       done()
     })
 
     it('its email should be unique', function (done) {
-      Users.create(userSample).exec(function (firstErr, userOne) {
-        logError(firstErr)
+      Users.create(userSample).exec(function (err) {
+        logError(err)
         Users.create({
           name: 'Steve Jobs',
           email: 'foobar@example.com',
           password: 'stevejob'
-        }).exec(function (secondErr) {
-          assert.ok(secondErr)
+        }).exec(function (err) {
+          expect(err).to.exist
           done()
         })
       })
@@ -107,7 +107,7 @@ describe.only('Users Model', function () {
         }).exec(function (err, userTwo) {
           logError(err)
           Users.update(userOne, {email: 'stevestop@example.com'}).exec(function (err) {
-            assert.ok(err)
+            expect(err).to.exist
             done()
           })
         })
