@@ -1,6 +1,6 @@
 var expect = require('chai').expect
 
-describe.only('Users Model', function () {
+describe('Users Model', function () {
   var userSample = {
     name: 'Foo Bar',
     email: 'foobar@example.com',
@@ -97,6 +97,46 @@ describe.only('Users Model', function () {
       done()
     })
 
+    it('its name must not be blank', function (done) {
+      Users.create(userSample).exec(function (err, user) {
+        logError(err)
+        Users.update(user, {name: ''}).exec(function (err) {
+          expect(err).to.exist
+          done()
+        })
+      })
+    })
+
+    it('its email must not be blank', function (done) {
+      Users.create(userSample).exec(function (err, user) {
+        logError(err)
+        Users.update(user, {email: ''}).exec(function (err) {
+          expect(err).to.exist
+          done()
+        })
+      })
+    })
+
+    it('its password must not be blank', function (done) {
+      Users.create(userSample).exec(function (err, user) {
+        logError(err)
+        Users.update(user, {password: ''}).exec(function (err) {
+          expect(err).to.exist
+          done()
+        })
+      })
+    })
+
+    it('its password must be encrypted', function (done) {
+      Users.create(userSample).exec(function (err, user) {
+        logError(err)
+        Users.update(user, {password: 'loremipsum'}).exec(function (err, updatedUser) {
+          expect(updatedUser.password).not.to.equal('loremipsum')
+          done()
+        })
+      })
+    })
+
     it('its updated email should not be existed', function (done) {
       Users.create(userSample).exec(function (err, userOne) {
         logError(err)
@@ -112,6 +152,20 @@ describe.only('Users Model', function () {
           })
         })
       })
+    })
+
+    it ('its new email must be valid', function (done) {
+      var invalidEmails = ['user@example,com', 'user_at_foo.org', 'user.name@example.',
+                           'foo@bar_baz.com', 'foo@bar+baz.com']
+      Users.create(userSample).exec(function (err, user) {
+        logError(err)
+        invalidEmails.forEach(function (invalidEmail) {
+          Users.update(user, {email: invalidEmail}).exec(function (err) {
+            expect(err).to.exist
+          })
+        })
+      })
+      done()
     })
   })
 })

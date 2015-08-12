@@ -11,7 +11,7 @@
  * error is encountered, Sails will call `res.serverError()`
  * automatically.
  */
-/* istanbul ignore next */
+
 module.exports = function serverError (data, options) {
 
   // Get access to `req`, `res`, & `sails`

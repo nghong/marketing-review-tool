@@ -1,0 +1,2 @@
+instrumentation:
+    excludes: ['config/**/*', 'api/policies/*', 'api/response/*', 'api/services/*', 'api/responses/*']
