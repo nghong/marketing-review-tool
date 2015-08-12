@@ -1,3 +1,3 @@
-# MRTv2
+# Marketing Review Tool
 
-a [Sails](http://sailsjs.org) application
+A tool I build for SIP using [SailsJS](http://sailsjs.org)
