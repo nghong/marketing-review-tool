@@ -7,7 +7,7 @@
  */
 
 module.exports = {
-	signup: function (req, res) {
+	create: function (req, res) {
     
   }
 }

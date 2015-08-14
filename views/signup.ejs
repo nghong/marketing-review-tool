@@ -1,0 +1,31 @@
+<form id="sign-up-form" class="form-signin" name="signup">
+  <h2 class="form-signin-heading">Create an account</h2>
+  <div class="row">
+    <!-- N A M E -->
+    <div class="control-group form-group col-md-12">
+      <label>Display name</label>
+      <input type="text" class="form-control" placeholder="John Snow" name="name" required>
+    </div>
+    <!-- E M A I L -->
+    <div class="control-group form-group col-md-12">
+      <label>Email address</label>
+      <input type="email" class="form-control" placeholder="johnsnow@got.com" name="email" required>
+    </div>
+    <!-- P A S S W O R D -->
+    <div class="control-group form-group col-md-12">
+      <label>Password</label>
+      <input type="password" class="form-control" placeholder="at least 6 characters" name="password" required>
+    </div>
+    <!-- C O N F I R M  P A S S W O R D -->
+    <div class="control-group form-group col-md-12">
+      <label>Re-enter password</label>
+      <input type="password" class="form-control" placeholder="retype your password" name="confirmation" required>
+    </div>
+  </div>
+  <br/>
+  <!-- Disable signup button until the form has no errors -->
+  <button class="btn btn-primary btn-lg btn-block" type="submit">
+  <span>Submit</span>
+  </button>
+  <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>
