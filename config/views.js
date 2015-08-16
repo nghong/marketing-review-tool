@@ -32,6 +32,7 @@ module.exports.views = {
 
   engine: 'ejs',
 
+
   /****************************************************************************
   *                                                                           *
   * Layouts are simply top-level HTML templates you can use as wrappers for   *
@@ -74,7 +75,7 @@ module.exports.views = {
   *                                                                           *
   ****************************************************************************/
 
-  layout: false,
+  layout: 'layout',
 
   /****************************************************************************
   *                                                                           *
