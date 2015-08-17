@@ -1,6 +1,13 @@
-<form id="sign-up-form" class="form-signin" name="signup" data-toggle="validator" role="form">
+<form id="sign-up-form" class="form-signin" method="POST" data-toggle="validator" role="form">
   <h2>Create an account</h2>
   <div class="row">
+    <% if (typeof err != 'undefined') { %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      <%= err %>
+    </div>
+    <% } %>
     <!-- N A M E -->
     <div class="form-group">
       <label for="inputName" class="control-label">Display name</label>

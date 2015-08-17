@@ -33,7 +33,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'homepage' },
-  'GET /signup': 'UsersController.signup'
+  'GET /signup': 'UsersController.signup',
+  'POST /signup': 'UsersController.create'
 
   /***************************************************************************
   *                                                                          *
