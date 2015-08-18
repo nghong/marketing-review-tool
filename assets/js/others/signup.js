@@ -1,11 +1,13 @@
 'use strict'
-/*
+
 $('#sign-up-form').validator().on('submit', function (e) {
   if (!e.isDefaultPrevented()) {
+    e.preventDefault()
     var formData = {
-      'name': $('input[name=name]').val(),
-      'email': $('input[name=email]').val(),
-      'password': $('input[name=superheroAlias]').val()
+      'name': $('#inputName').val(),
+      'email': $('#inputEmail').val(),
+      'password': $('#inputPassword').val(),
+      'confirmation': $('inputConfirmation').val()
     }
 
     $.ajax({
@@ -15,10 +17,8 @@ $('#sign-up-form').validator().on('submit', function (e) {
       dataType: 'json',
       encode: true
     }).done(function (data) {
-      console.log(data)
+      $('#errors').text(JSON.stringify(data))
+      $('#errors').toggle()
     })
-
-    e.preventDefault()
   }
 })
-*/

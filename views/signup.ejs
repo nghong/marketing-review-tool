@@ -1,34 +1,35 @@
 <form id="sign-up-form" class="form-signin" method="POST" data-toggle="validator" role="form">
   <h2>Create an account</h2>
-    <!-- N A M E -->
-    <div class="form-group">
-      <label for="inputName" class="control-label">Display name</label>
-      <input type="text" class="form-control" placeholder="John Snow" name="name" id="inputName" data-error="Display name is required" required>
-      <span class="help-block with-errors"></span>
-    </div>
-    <!-- E M A I L -->
-    <div class="form-group">
-      <label for="inputEmail">Email address</label>
-      <input type="email" class="form-control" placeholder="johnsnow@got.com" name="email" id="inputEmail" data-error="Invalid email address" required>
-      <span class="help-block with-errors"></span>
-    </div>
-    <!-- P A S S W O R D -->
-    <div class="form-group">
-      <label for="inputPassword">Password</label>
-      <input type="password" class="form-control" placeholder="at least 6 characters" name="password" id="inputPassword" data-minlength="6" data-error="At least 6 characters" required>
-      <span class="help-block with-errors"></span>
-    </div>
-    <!-- C O N F I R M  P A S S W O R D -->
-    <div class="form-group">
-      <label for="inputConfirmation">Re-enter password</label>
-      <input type="password" class="form-control" placeholder="retype your password" name="confirmation" id="inputConfirmation" data-match="#inputPassword" data-match-error="Password cofirmation does not match" required>
-      <span class="help-block with-errors"></span>
-    </div>
+  <div class="alert alert-danger" role="alert" id="errors" style="display: none;"></div>
+  <!-- N A M E -->
+  <div class="form-group">
+    <label for="inputName" class="control-label">Display name</label>
+    <input type="text" class="form-control" placeholder="John Snow" name="name" id="inputName" data-error="Display name is required" required>
+    <span class="help-block with-errors"></span>
   </div>
-  <br/>
-  <!-- Disable signup button until the form has no errors -->
-  <button class="btn btn-primary btn-lg btn-block" type="submit">
-  <span>Submit</span>
-  </button>
-  <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+  <!-- E M A I L -->
+  <div class="form-group">
+    <label for="inputEmail">Email address</label>
+    <input type="email" class="form-control" placeholder="johnsnow@got.com" name="email" id="inputEmail" data-error="Invalid email address" required>
+    <span class="help-block with-errors"></span>
+  </div>
+  <!-- P A S S W O R D -->
+  <div class="form-group">
+    <label for="inputPassword">Password</label>
+    <input type="password" class="form-control" placeholder="at least 6 characters" name="password" id="inputPassword" data-minlength="6" data-error="At least 6 characters" required>
+    <span class="help-block with-errors"></span>
+  </div>
+  <!-- C O N F I R M  P A S S W O R D -->
+  <div class="form-group">
+    <label for="inputConfirmation">Re-enter password</label>
+    <input type="password" class="form-control" placeholder="retype your password" name="confirmation" id="inputConfirmation" data-match="#inputPassword" data-match-error="Password cofirmation does not match" required>
+    <span class="help-block with-errors"></span>
+  </div>
+</div>
+<br/>
+<!-- Disable signup button until the form has no errors -->
+<button class="btn btn-primary btn-lg btn-block" type="submit">
+<span>Submit</span>
+</button>
+<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 </form>
