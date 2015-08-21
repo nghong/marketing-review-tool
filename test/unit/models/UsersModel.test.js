@@ -1,7 +1,7 @@
 'use strict'
 var expect = require('chai').expect
 
-describe('Users Model', function () {
+describe('UsersModel', function () {
   var userSample = {
     name: 'Foo Bar',
     email: 'foobar@example.com',
@@ -46,6 +46,17 @@ describe('Users Model', function () {
         name: 'Foo Bar',
         email: 'foobar@example.com',
         password: ''
+      }).exec(function (err) {
+        expect(err).to.exist
+        done()
+      })
+    })
+
+    it('its password must be at least 6 characters', function (done) {
+      Users.create({
+        name: 'Foo Bar',
+        email: 'foobar@example.com',
+        password: 'foo'
       }).exec(function (err) {
         expect(err).to.exist
         done()
@@ -112,6 +123,16 @@ describe('Users Model', function () {
       Users.create(userSample).exec(function (err, user) {
         logError(err)
         Users.update(user, {email: ''}).exec(function (err) {
+          expect(err).to.exist
+          done()
+        })
+      })
+    })
+
+    it('its password must not be blank', function (done) {
+      Users.create(userSample).exec(function (err, user) {
+        logError(err)
+        Users.update(user, {password: ''}).exec(function (err) {
           expect(err).to.exist
           done()
         })

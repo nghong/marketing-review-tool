@@ -1,6 +1,5 @@
 var Sails = require('sails')
 var Barrels = require('barrels')
-var sails
 
 before(function (done) {
 
@@ -18,15 +17,14 @@ before(function (done) {
     },
     environment: 'development',
     hooks: {
-      'i18n': false,
-      'csrf': false
+      'i18n': false
     }
 
-  }, function (err, server) {
-    sails = server
+  }, function (err, sails) {
     if (err) return done(err)
     // here you can load fixtures, etc.
     var barrels = new Barrels()
+    fixtures = barrels.data
     barrels.populate(function (err) {
       done(err, sails)
     })

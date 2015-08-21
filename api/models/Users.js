@@ -5,7 +5,8 @@
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
-var Passwords = require('machinepack-passwords')
+var bcrypt = require('bcrypt')
+var SALT_WORK_FACTOR = 10
 
 module.exports = {
 
@@ -28,26 +29,20 @@ module.exports = {
       defaultsTo: new Date()
     }
   },
-  beforeCreate: function (user, callback) {
+
+  setPassword: function (user, callback) {
     if (user.password.length < 6) {
       callback({err: ['Password must have at least 6 characters!']})
     } else {
-      Passwords.encryptPassword({
-        password: user.password
-      })
-      .exec({
-        // An unexpected error occurred.
-        error: /* istanbul ignore next */ function (err) {
-          console.log(err)
-          callback(err)
-        },
-        // OK.
-        success: function (result) {
-          user.password = result
-          callback(null, user)
-        }
+      bcrypt.hash(user.password, SALT_WORK_FACTOR, function (err, hash) {
+        user.password = hash
+        callback(null, user)
       })
     }
+  },
+
+  beforeCreate: function (user, callback) {
+    module.exports.setPassword(user, callback)
   }
 }
 

@@ -23,8 +23,8 @@ module.exports = {
       lastLoggedIn: new Date()
     }, function userCreated (err, newUser) {
       if (err) {
-        console.log('err: ', err)
-        console.log('err.invalidAttributes: ', err.invalidAttributes)
+        // console.log('err: ', err)
+        // console.log('err.invalidAttributes: ', err.invalidAttributes)
 
         // If this is a uniqueness error about the email attribute,
         // send back an easily parseable status code.
@@ -35,6 +35,7 @@ module.exports = {
         }
 
         // Otherwise, send back something reasonable as our error response.
+        /* istanbul ignore next */
         return res.negotiate(err)
       }
 
