@@ -29,21 +29,25 @@ module.exports = {
     }
   },
   beforeCreate: function (user, callback) {
-    Passwords.encryptPassword({
-      password: user.password
-    })
-    .exec({
-      // An unexpected error occurred.
-      error: /* istanbul ignore next */ function (err) {
-        console.log(err)
-        callback(err)
-      },
-      // OK.
-      success: function (result) {
-        user.password = result
-        callback(null, user)
-      }
-    })
+    if (user.password.length < 6) {
+      callback({err: ['Password must have at least 6 characters!']})
+    } else {
+      Passwords.encryptPassword({
+        password: user.password
+      })
+      .exec({
+        // An unexpected error occurred.
+        error: /* istanbul ignore next */ function (err) {
+          console.log(err)
+          callback(err)
+        },
+        // OK.
+        success: function (result) {
+          user.password = result
+          callback(null, user)
+        }
+      })
+    }
   }
 }
 

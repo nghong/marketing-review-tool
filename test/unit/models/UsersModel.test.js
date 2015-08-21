@@ -14,7 +14,7 @@ describe('Users Model', function () {
   }
 
   describe('when the user is created', function () {
-    beforeEach('Remove all records', function (done) {
+    beforeEach('remove old records', function (done) {
       Users.destroy({}).exec(function (err) {})
       done()
     })
@@ -112,16 +112,6 @@ describe('Users Model', function () {
       Users.create(userSample).exec(function (err, user) {
         logError(err)
         Users.update(user, {email: ''}).exec(function (err) {
-          expect(err).to.exist
-          done()
-        })
-      })
-    })
-
-    it('its password must not be blank', function (done) {
-      Users.create(userSample).exec(function (err, user) {
-        logError(err)
-        Users.update(user, {password: ''}).exec(function (err) {
           expect(err).to.exist
           done()
         })
