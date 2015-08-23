@@ -8,9 +8,9 @@
 
 module.exports = {
 
-  signup: function (req, res) {
+  new: function (req, res) {
     res.locals.scripts = ['js/others/signup.js']
-    return res.view('signup', {title: 'Sign-up for Marketing Review Tool'})
+    return res.view('users/signup')
   },
 
   create: function (req, res) {

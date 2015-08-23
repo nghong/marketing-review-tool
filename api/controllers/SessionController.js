@@ -8,7 +8,12 @@ var bcrypt = require('bcrypt')
 
 module.exports = {
 
-  signin: function (req, res) {
+  new: function (req, res) {
+    res.locals.scripts = ['js/others/signin.js']
+    return res.view('session/new')
+  },
+
+  create: function (req, res) {
     var params = req.allParams()
     if (!params.email || !params.password) {
       return res.send(400, 'Missing email or password!')

@@ -27,6 +27,10 @@ module.exports = {
     lastLoggedIn: {
       type: 'date',
       defaultsTo: new Date()
+    },
+    reviewCount: {
+      type: 'integer',
+      defaultsTo: 0
     }
   },
 

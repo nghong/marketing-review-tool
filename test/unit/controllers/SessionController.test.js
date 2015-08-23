@@ -10,6 +10,18 @@ describe('UsersController', function () {
     confirmation: 'foobar'
   }
 
+  describe('GET /signin', function () {
+    it('should return new session view', function (done) {
+      request(sails.hooks.http.app)
+        .get('/signin')
+        .expect(200)
+        .end(function (err, res) {
+          res.text.should.containEql('Please sign in...')
+          done()
+        })
+    })
+  })
+
   describe('POST /signin', function () {
     beforeEach('remove old records and add a new user', function (done) {
       Users.destroy({}).exec(function () {
