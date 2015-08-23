@@ -17,7 +17,10 @@ $('#sign-up-form').validator().on('submit', function (e) {
       dataType: 'json',
       encode: true
     }).done(function (data) {
-      $('#errors').text(JSON.stringify(data))
+      $('#success').text('Your account has been created!')
+      $('#success').toggle()
+    }).fail(function (error) {
+      $('#errors').text(error.responseText)
       $('#errors').toggle()
     })
   }
