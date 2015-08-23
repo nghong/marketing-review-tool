@@ -55,4 +55,5 @@ describe('UsersController', function () {
       })
     })
   })
+
 })

@@ -30,7 +30,7 @@ module.exports = {
     }
   },
 
-  setPassword: function (user, callback) {
+  beforeCreate: function (user, callback) {
     if (user.password.length < 6) {
       callback({err: ['Password must have at least 6 characters!']})
     } else {
@@ -39,10 +39,6 @@ module.exports = {
         callback(null, user)
       })
     }
-  },
-
-  beforeCreate: function (user, callback) {
-    module.exports.setPassword(user, callback)
   }
 }
 
