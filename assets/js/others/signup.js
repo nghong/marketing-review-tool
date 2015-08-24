@@ -17,11 +17,9 @@ $('#sign-up-form').validator().on('submit', function (e) {
       dataType: 'json',
       encode: true
     }).done(function (data) {
-      $('#success').text('Your account has been created!')
-      $('#success').toggle()
+      toastr.info('Your account has been created!')
     }).fail(function (error) {
-      $('#errors').text(error.responseText)
-      $('#errors').toggle()
+      toastr.error(error.responseText)
     })
   }
 })

@@ -1,7 +1,5 @@
 <form id="sign-up-form" class="form-signin" method="POST" data-toggle="validator" role="form">
   <h2>Create an account</h2>
-  <div class="alert alert-danger" role="alert" id="errors" style="display: none;"></div>
-  <div class="alert alert-success" role="alert" id="success" style="display: none;"></div>
   <!-- N A M E -->
   <div class="form-group">
     <label for="inputName" class="control-label">Display name</label>
@@ -29,8 +27,6 @@
 </div>
 <br/>
 <!-- Disable signup button until the form has no errors -->
-<button class="btn btn-primary btn-lg btn-block" type="submit">
-<span>Submit</span>
-</button>
+<button class="btn btn-primary btn-lg btn-block" type="submit" id="btnSubmit">Submit</button>
 <input type="hidden" name="_csrf" value="<%= _csrf %>" />
 </form>
