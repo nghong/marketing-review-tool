@@ -22,10 +22,11 @@ module.exports = {
       /* istanbul ignore next */
       if (err) return res.negotiate(err)
       if (!user) {
-        return res.notFound()
+        return res.send(404, 'Email is not found!')
       } else {
         if (bcrypt.compareSync(params.password, user.password)) {
-          return res.send(200, 'Login successfully!')
+          
+          return res.ok('Login successfully!')
         } else {
           return res.send(400, 'Wrong password!')
         }
