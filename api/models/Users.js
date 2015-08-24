@@ -12,6 +12,8 @@ var SALT_WORK_FACTOR = 10
 
 module.exports = {
 
+  schema: true,
+
   attributes: {
     name: {
       type: 'string',
@@ -106,8 +108,8 @@ module.exports = {
   },
 
   beforeCreate: function (user, callback) {
-    if (!user.password || user.password !== user.passwordConfirmation) {
-      return callback({ err: "Password doesn't match confirmation!" })
+    if (user.password.length < 6) {
+      return callback({ err: "Password is too short" })
     }
     Users.encryptPassword(user, function (err) {
       callback(err)
