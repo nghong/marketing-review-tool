@@ -15,7 +15,7 @@ describe('UsersModel', function () {
 
   describe('when the user is created', function () {
     beforeEach('remove old records', function (done) {
-      Users.destroy({}).exec(function (err) {})
+      Users.destroy({}).exec(function () {})
       done()
     })
 
@@ -178,6 +178,44 @@ describe('UsersModel', function () {
         })
       })
       done()
+    })
+  })
+
+  describe('given a valid password', function () {
+    before(function (done) {
+      Users.destroy({}).exec(function () {
+        done()
+      })
+    })
+    it('should return true', function (done) {
+      Users.create({
+        name: 'Tesing',
+        email: 'test@example.com',
+        password: 'testing'
+      }).exec(function (err, user) {
+        logError(err)
+        user.validatePassword('testing', function (err, valid) {
+          valid.should.be.true()
+          done()
+        })
+      })
+    })
+  })
+
+  describe('given an invalid password', function () {
+    before(function (done) {
+      Users.destroy({}).exec(function () {
+        done()
+      })
+    })
+    it('should return false', function (done) {
+      Users.create(userSample).exec(function (err, user) {
+        logError(err)
+        user.validatePassword('wrong_password', function (err, valid) {
+          valid.should.be.false()
+          done()
+        })
+      })
     })
   })
 })

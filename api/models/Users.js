@@ -46,14 +46,13 @@ module.exports = {
       delete user.sessionTokens
       delete user._csrf
       return user
+    },
+    validatePassword: function (candidatePassword, callback) {
+      bcrypt.compare(candidatePassword, this.password, function (err, valid) {
+        if (err) return callback(err)
+        callback(null, valid)
+      })
     }
-  },
-
-  validatePassword: function (candidatePassword, callback) {
-    bcrypt.compare(candidatePassword, this.password, function (err, valid) {
-      if (err) return callback(err)
-      callback(null, valid)
-    })
   },
 
   encryptPassword: function (user, callback) {

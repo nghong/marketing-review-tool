@@ -70,7 +70,7 @@ describe('UsersController', function () {
         })
     })
 
-    it('should return 200 and user_id if valid', function (done) {
+    it('should return 200 and session.authenticated', function (done) {
       request(sails.hooks.http.app)
         .post('/signin')
         .send({
