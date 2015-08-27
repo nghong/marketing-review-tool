@@ -1,7 +1,7 @@
 var request = require('supertest');
 var should = require('should');
 
-describe('UsersController', function () {
+describe('UserController', function () {
   var userSample = {
     name: 'Foo Bar',
     email: 'foobar@example.com',
@@ -9,10 +9,10 @@ describe('UsersController', function () {
     confirmation: 'foobar'
   };
 
-  describe('GET /users', function () {
+  describe('GET /user', function () {
     it('should response with json and status 200', function (done) {
       request(sails.hooks.http.app)
-        .get('/users')
+        .get('/user')
         .expect('Content-Type', /json/)
         .expect(200, done);
     });
@@ -29,7 +29,7 @@ describe('UsersController', function () {
   describe('POST /signup', function () {
 
     beforeEach('remove old records', function (done) {
-      Users.destroy({}).exec(function (err) {});
+      User.destroy({}).exec(function (err) {});
       done();
     });
 
@@ -45,7 +45,7 @@ describe('UsersController', function () {
     });
 
     it('should response with 409 if email exists', function (done) {
-      Users.create(userSample).exec(function (err, user) {
+      User.create(userSample).exec(function (err, user) {
         request(sails.hooks.http.app)
         .post('/signup')
         .send(userSample)

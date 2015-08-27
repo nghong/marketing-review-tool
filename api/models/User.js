@@ -1,5 +1,5 @@
 /**
-* Users.js
+* User.js
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
 * @docs        :: http://sailsjs.org/#!documentation/models
@@ -39,6 +39,7 @@ module.exports = {
     toJSON: function () {
       var user = this.toObject();
       delete user.password;
+      delete user.confirmation;
       delete user._csrf;
       return user;
     },
@@ -64,7 +65,7 @@ module.exports = {
     if (user.password.length < 6) {
       return callback({ err: "Password is too short" });
     }
-    Users.encryptPassword(user, function (err) {
+    User.encryptPassword(user, function (err) {
       callback(err);
     });
   },
@@ -73,7 +74,7 @@ module.exports = {
     if (!user.password) {
       return callback();
     }
-    Users.encryptPassword(user, function (err) {
+    User.encryptPassword(user, function (err) {
       callback(err);
     });
   }

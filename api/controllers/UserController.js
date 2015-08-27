@@ -1,5 +1,5 @@
 /**
- * UsersController
+ * UserController
  *
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
@@ -9,14 +9,14 @@ module.exports = {
 
   new: function (req, res) {
     res.locals.scripts = ['js/others/signup.js'];
-    return res.view('users/signup');
+    return res.view('user/signup');
   },
 
   create: function (req, res) {
     var params = req.allParams();
 
     // Encrypt a string using the BCrypt algorithm.
-    Users.create({
+    User.create({
       name: params.name,
       email: params.email,
       password: params.password,

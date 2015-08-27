@@ -1,7 +1,7 @@
 var request = require('supertest');
 var should = require('should');
 
-describe('UsersController', function () {
+describe('UserController', function () {
   var userSample = {
     name: 'Foo Bar',
     email: 'foobar@example.com',
@@ -10,13 +10,13 @@ describe('UsersController', function () {
   };
 
   before(function (done) {
-    Users.create(userSample).exec(function () {
+    User.create(userSample).exec(function () {
       done();
     });
   });
 
   after(function (done) {
-    Users.destroy({}).exec(function () {
+    User.destroy({}).exec(function () {
       done();
     });
   });

@@ -17,7 +17,7 @@ module.exports = {
     if (!params.email || !params.password) {
       return res.send(400, 'Missing email or password!');
     }
-    Users.findOne({email: params.email}).exec(function (err, user) {
+    User.findOne({email: params.email}).exec(function (err, user) {
       /* istanbul ignore if */
       if (err) return res.negotiate(err);
       if (!user) {

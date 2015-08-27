@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-describe('UsersModel', function () {
+describe('UserModel', function () {
   var userSample = {
     name: 'Foo Bar',
     email: 'foobar@example.com',
@@ -14,12 +14,12 @@ describe('UsersModel', function () {
 
   describe('when the user is created', function () {
     beforeEach('remove old records', function (done) {
-      Users.destroy({}).exec(function () {});
+      User.destroy({}).exec(function () {});
       done();
     });
 
     it('should have a name', function (done) {
-      Users.create({
+      User.create({
         name: '',
         email: 'foobar@example.com',
         password: 'foobar'
@@ -30,7 +30,7 @@ describe('UsersModel', function () {
     });
 
     it('should have an email', function (done) {
-      Users.create({
+      User.create({
         name: 'Foo Bar',
         email: '',
         password: 'foobar'
@@ -41,7 +41,7 @@ describe('UsersModel', function () {
     });
 
     it('should have a password', function (done) {
-      Users.create({
+      User.create({
         name: 'Foo Bar',
         email: 'foobar@example.com',
         password: ''
@@ -52,7 +52,7 @@ describe('UsersModel', function () {
     });
 
     it('its password must be at least 6 characters', function (done) {
-      Users.create({
+      User.create({
         name: 'Foo Bar',
         email: 'foobar@example.com',
         password: 'foo'
@@ -63,7 +63,7 @@ describe('UsersModel', function () {
     });
 
     it('its password should be encrypted', function (done) {
-      Users.create(userSample).exec(function (err, user) {
+      User.create(userSample).exec(function (err, user) {
         logError(err);
         expect(user.password).to.not.equal(userSample.password);
         done();
@@ -80,7 +80,7 @@ describe('UsersModel', function () {
       };
       invalidEmails.forEach(function (invalidEmail) {
         userWithInvalidEmail.email = invalidEmail;
-        Users.create(userWithInvalidEmail).exec(function (err) {
+        User.create(userWithInvalidEmail).exec(function (err) {
           expect(err).to.exist;
         });
       });
@@ -88,9 +88,9 @@ describe('UsersModel', function () {
     });
 
     it('its email should be unique', function (done) {
-      Users.create(userSample).exec(function (err) {
+      User.create(userSample).exec(function (err) {
         logError(err);
-        Users.create({
+        User.create({
           name: 'Steve Jobs',
           email: 'foobar@example.com',
           password: 'stevejob'
@@ -101,7 +101,7 @@ describe('UsersModel', function () {
       });
     });
     it('its data can be format to JSON', function (done) {
-      Users.create(userSample).exec(function (err, user) {
+      User.create(userSample).exec(function (err, user) {
         logError(err);
         var userJSON = user.toJSON();
         expect(userJSON).to.have.property('name');
@@ -115,14 +115,14 @@ describe('UsersModel', function () {
 
   describe('when the user is edited', function () {
     beforeEach(function (done) {
-      Users.destroy({}).exec(function () {});
+      User.destroy({}).exec(function () {});
       done();
     });
 
     it('its name must not be blank', function (done) {
-      Users.create(userSample).exec(function (err, user) {
+      User.create(userSample).exec(function (err, user) {
         logError(err);
-        Users.update(user, {name: ''}).exec(function (err) {
+        User.update(user, {name: ''}).exec(function (err) {
           expect(err).to.exist;
           done();
         });
@@ -130,9 +130,9 @@ describe('UsersModel', function () {
     });
 
     it('its email must not be blank', function (done) {
-      Users.create(userSample).exec(function (err, user) {
+      User.create(userSample).exec(function (err, user) {
         logError(err);
-        Users.update(user, {email: ''}).exec(function (err) {
+        User.update(user, {email: ''}).exec(function (err) {
           expect(err).to.exist;
           done();
         });
@@ -140,9 +140,9 @@ describe('UsersModel', function () {
     });
 
     it('its password must not be blank', function (done) {
-      Users.create(userSample).exec(function (err, user) {
+      User.create(userSample).exec(function (err, user) {
         logError(err);
-        Users.update(user, {password: ''}).exec(function (err) {
+        User.update(user, {password: ''}).exec(function (err) {
           expect(err).to.exist;
           done();
         });
@@ -150,9 +150,9 @@ describe('UsersModel', function () {
     });
 
     it('its password must be encrypted', function (done) {
-      Users.create(userSample).exec(function (err, user) {
+      User.create(userSample).exec(function (err, user) {
         logError(err);
-        Users.update(user, {password: 'loremipsum'}).exec(function (err, updatedUser) {
+        User.update(user, {password: 'loremipsum'}).exec(function (err, updatedUser) {
           expect(updatedUser.password).not.to.equal('loremipsum');
           done();
         });
@@ -160,15 +160,15 @@ describe('UsersModel', function () {
     });
 
     it('its updated email should not be existed', function (done) {
-      Users.create(userSample).exec(function (err, userOne) {
+      User.create(userSample).exec(function (err, userOne) {
         logError(err);
-        Users.create({
+        User.create({
           name: 'Steve Stop',
           email: 'stevestop@example.com',
           password: 'stevestop'
         }).exec(function (err, userTwo) {
           logError(err);
-          Users.update(userOne, {email: 'stevestop@example.com'}).exec(function (err) {
+          User.update(userOne, {email: 'stevestop@example.com'}).exec(function (err) {
             expect(err).to.exist;
             done();
           });
@@ -179,10 +179,10 @@ describe('UsersModel', function () {
     it ('its new email must be valid', function (done) {
       var invalidEmails = ['user@example,com', 'user_at_foo.org', 'user.name@example.',
                            'foo@bar_baz.com', 'foo@bar+baz.com'];
-      Users.create(userSample).exec(function (err, user) {
+      User.create(userSample).exec(function (err, user) {
         logError(err);
         invalidEmails.forEach(function (invalidEmail) {
-          Users.update(user, {email: invalidEmail}).exec(function (err) {
+          User.update(user, {email: invalidEmail}).exec(function (err) {
             expect(err).to.exist;
           });
         });
@@ -193,12 +193,12 @@ describe('UsersModel', function () {
 
   describe('given a valid password', function () {
     before(function (done) {
-      Users.destroy({}).exec(function () {
+      User.destroy({}).exec(function () {
         done();
       });
     });
     it('should return true', function (done) {
-      Users.create({
+      User.create({
         name: 'Tesing',
         email: 'test@example.com',
         password: 'testing'
@@ -214,12 +214,12 @@ describe('UsersModel', function () {
 
   describe('given an invalid password', function () {
     before(function (done) {
-      Users.destroy({}).exec(function () {
+      User.destroy({}).exec(function () {
         done();
       });
     });
     it('should return false', function (done) {
-      Users.create(userSample).exec(function (err, user) {
+      User.create(userSample).exec(function (err, user) {
         logError(err);
         user.validatePassword('wrong_password', function (err, valid) {
           valid.should.be.false();
