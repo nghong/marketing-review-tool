@@ -114,5 +114,6 @@ npm-debug.log
 .DS_STORE
 .netbeans
 nbproject
+coverage
 .idea
 .node_history
