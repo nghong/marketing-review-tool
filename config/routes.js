@@ -36,7 +36,8 @@ module.exports.routes = {
   'GET /signup': 'UsersController.new',
   'POST /signup': 'UsersController.create',
   'GET /signin': 'SessionController.new',
-  'POST /signin': 'SessionController.create'
+  'POST /signin': 'SessionController.login',
+  'GET /signout': 'SessionController.logout'
 
   /***************************************************************************
   *                                                                          *

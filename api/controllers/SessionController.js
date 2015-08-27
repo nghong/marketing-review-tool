@@ -12,20 +12,23 @@ module.exports = {
     return res.view('session/new');
   },
 
-  create: function (req, res) {
+  login: function (req, res) {
     var params = req.allParams();
     if (!params.email || !params.password) {
       return res.send(400, 'Missing email or password!');
     }
     Users.findOne({email: params.email}).exec(function (err, user) {
-      /* istanbul ignore next */
+      /* istanbul ignore if */
       if (err) return res.negotiate(err);
       if (!user) {
         return res.send(404, 'Email is not found!');
       } else {
         user.validatePassword(params.password, function (err, valid) {
+          /* istanbul ignore if */
           if (err) return res.negotiate(err);
           if (valid) {
+            req.session.me = user.id;
+            req.session.authenticated = true;
             return res.ok('Login successfully!');
           } else {
             return res.send(400, 'Wrong password!');
@@ -33,6 +36,11 @@ module.exports = {
         });
       }
     });
+  },
+
+  logout: function (req, res) {
+    req.session.me = null;
+    return res.redirect('/');
   }
 
 };

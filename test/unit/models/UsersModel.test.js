@@ -100,6 +100,17 @@ describe('UsersModel', function () {
         });
       });
     });
+    it('its data can be format to JSON', function (done) {
+      Users.create(userSample).exec(function (err, user) {
+        logError(err);
+        var userJSON = user.toJSON();
+        expect(userJSON).to.have.property('name');
+        expect(userJSON).to.have.property('email');
+        expect(userJSON).to.not.have.property('password');
+        expect(userJSON).to.not.have.property('_csrf');
+        done();
+      });
+    });
   });
 
   describe('when the user is edited', function () {

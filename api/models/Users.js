@@ -39,8 +39,6 @@ module.exports = {
     toJSON: function () {
       var user = this.toObject();
       delete user.password;
-      delete user.confirmation;
-      delete user.sessionTokens;
       delete user._csrf;
       return user;
     },

@@ -1,6 +1,5 @@
-'use strict'
-var request = require('supertest')
-var should = require('should')
+var request = require('supertest');
+var should = require('should');
 
 describe('UsersController', function () {
   var userSample = {
@@ -8,7 +7,19 @@ describe('UsersController', function () {
     email: 'foobar@example.com',
     password: 'foobar',
     confirmation: 'foobar'
-  }
+  };
+
+  before(function (done) {
+    Users.create(userSample).exec(function () {
+      done();
+    });
+  });
+
+  after(function (done) {
+    Users.destroy({}).exec(function () {
+      done();
+    });
+  });
 
   describe('GET /signin', function () {
     it('should return new session view', function (done) {
@@ -16,20 +27,13 @@ describe('UsersController', function () {
         .get('/signin')
         .expect(200)
         .end(function (err, res) {
-          res.text.should.containEql('Please sign in...')
-          done()
-        })
-    })
-  })
+          res.text.should.containEql('Please sign in...');
+          done();
+        });
+    });
+  });
 
   describe('POST /signin', function () {
-    beforeEach('remove old records and add a new user', function (done) {
-      Users.destroy({}).exec(function () {
-        Users.create(userSample).exec(function () {
-          done()
-        })
-      })
-    })
 
     it('should return 400 if missing email or password', function (done) {
       request(sails.hooks.http.app)
@@ -40,21 +44,24 @@ describe('UsersController', function () {
         })
         .expect(400)
         .end(function (err, res) {
-          res.text.should.equal('Missing email or password!')
-          done()
-        })
-    })
+          res.text.should.equal('Missing email or password!');
+          done();
+        });
+    });
 
     it('should return 404 if email is not found', function (done) {
       request(sails.hooks.http.app)
         .post('/signin')
         .send({
-          email: 'foo@example.com',
+          email: 'notfoundemail@example.com',
           password: 'foobar'
         })
         .expect(404)
-        .end(done)
-    })
+        .end(function (err, res) {
+          res.text.should.equal('Email is not found!');
+          done();
+        });
+    });
 
     it('should return 400 if wrong password', function (done) {
       request(sails.hooks.http.app)
@@ -65,12 +72,12 @@ describe('UsersController', function () {
         })
         .expect(400)
         .end(function (err, res) {
-          res.text.should.equal('Wrong password!')
-          done()
-        })
-    })
+          res.text.should.equal('Wrong password!');
+          done();
+        });
+    });
 
-    it('should return 200 and session.authenticated', function (done) {
+    it('should return 200 if valid', function (done) {
       request(sails.hooks.http.app)
         .post('/signin')
         .send({
@@ -79,9 +86,20 @@ describe('UsersController', function () {
         })
         .expect(200)
         .end(function (err, res) {
-          res.text.should.equal('Login successfully!')
-          done()
-        })
-    })
-  })
-})
+          res.text.should.equal('Login successfully!');
+          done();
+        });
+    });
+  });
+
+  describe('GET /signout', function () {
+    it('should redirect to homepage', function (done) {
+      request(sails.hooks.http.app)
+        .get('/signout')
+        .end(function (err, res) {
+          res.header.location.should.equal('/');
+          done();
+        });
+    });
+  });
+});

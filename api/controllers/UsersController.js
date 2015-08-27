@@ -1,4 +1,3 @@
-'use strict'
 /**
  * UsersController
  *
@@ -9,12 +8,12 @@
 module.exports = {
 
   new: function (req, res) {
-    res.locals.scripts = ['js/others/signup.js']
-    return res.view('users/signup')
+    res.locals.scripts = ['js/others/signup.js'];
+    return res.view('users/signup');
   },
 
   create: function (req, res) {
-    var params = req.allParams()
+    var params = req.allParams();
 
     // Encrypt a string using the BCrypt algorithm.
     Users.create({
@@ -32,22 +31,23 @@ module.exports = {
         if (err.invalidAttributes && err.invalidAttributes.email &&
             err.invalidAttributes.email[0] &&
             err.invalidAttributes.email[0].rule === 'unique') {
-          return res.emailAddressInUse()
+          return res.emailAddressInUse();
         }
 
         // Otherwise, send back something reasonable as our error response.
         /* istanbul ignore next */
-        return res.negotiate(err)
+        return res.negotiate(err);
       }
 
       // Log user in
-      req.session.me = newUser.id
+      req.session.me = newUser.id;
+      req.session.authenticated = true;
 
       // Send back the id of the new user
       return res.json({
         id: newUser.id
-      })
-    })
+      });
+    });
   }
 
-}
+};
