@@ -12,7 +12,7 @@ module.exports = {
       collection: 'Post',
       via: 'postId'
     },
-    owner: {
+    author: {
       model: 'User'
     },
     reviewers: {

@@ -35,7 +35,7 @@ module.exports = {
     },
     posts: {
       collection: 'PostMapping',
-      via: 'owner'
+      via: 'author'
     },
     reviews: {
       collection: 'PostMapping',
