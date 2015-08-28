@@ -23,9 +23,6 @@ module.exports = {
       lastLoggedIn: new Date()
     }, function userCreated (err, newUser) {
       if (err) {
-        // console.log('err: ', err)
-        // console.log('err.invalidAttributes: ', err.invalidAttributes)
-
         // If this is a uniqueness error about the email attribute,
         // send back an easily parseable status code.
         if (err.invalidAttributes && err.invalidAttributes.email &&

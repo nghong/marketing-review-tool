@@ -1,5 +1,5 @@
 var request = require('supertest');
-var should = require('should');
+var should = require('chai').should();
 
 describe('UserController', function () {
   var userSample = {
@@ -27,7 +27,7 @@ describe('UserController', function () {
         .get('/signin')
         .expect(200)
         .end(function (err, res) {
-          res.text.should.containEql('Please sign in...');
+          res.text.should.contain('Please sign in...');
           done();
         });
     });

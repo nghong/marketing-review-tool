@@ -33,8 +33,17 @@ module.exports = {
       type: 'integer',
       defaultsTo: 0
     },
-    sessionTokens: {
-      type: 'array'
+    posts: {
+      collection: 'PostMapping',
+      via: 'owner'
+    },
+    reviews: {
+      collection: 'PostMapping',
+      via: 'reviewers'
+    },
+    postsModify: {
+      collection: 'Post',
+      via: 'lastModified'
     },
     toJSON: function () {
       var user = this.toObject();

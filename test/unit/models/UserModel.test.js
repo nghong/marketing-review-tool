@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-describe('UserModel', function () {
+describe('UserModel:', function () {
   var userSample = {
     name: 'Foo Bar',
     email: 'foobar@example.com',
@@ -163,13 +163,13 @@ describe('UserModel', function () {
       User.create(userSample).exec(function (err, userOne) {
         logError(err);
         User.create({
-          name: 'Steve Stop',
-          email: 'stevestop@example.com',
-          password: 'stevestop'
+          name: 'Testing',
+          email: 'testing@example.com',
+          password: 'testing'
         }).exec(function (err, userTwo) {
           logError(err);
-          User.update(userOne, {email: 'stevestop@example.com'}).exec(function (err) {
-            expect(err).to.exist;
+          User.update(userOne, {email: 'testing@example.com'}).exec(function (err, userUpdated) {
+            expect(userUpdated).to.be.empty;
             done();
           });
         });
@@ -205,7 +205,7 @@ describe('UserModel', function () {
       }).exec(function (err, user) {
         logError(err);
         user.validatePassword('testing', function (err, valid) {
-          valid.should.be.true();
+          expect(valid).to.be.true;
           done();
         });
       });
@@ -222,7 +222,7 @@ describe('UserModel', function () {
       User.create(userSample).exec(function (err, user) {
         logError(err);
         user.validatePassword('wrong_password', function (err, valid) {
-          valid.should.be.false();
+          expect(valid).to.be.false;
           done();
         });
       });

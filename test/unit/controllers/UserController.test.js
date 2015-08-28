@@ -1,5 +1,5 @@
 var request = require('supertest');
-var should = require('should');
+var should = require('chai').should();
 
 describe('UserController', function () {
   var userSample = {
