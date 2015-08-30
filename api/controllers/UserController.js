@@ -9,7 +9,7 @@ module.exports = {
 
   new: function (req, res) {
     res.locals.scripts = ['js/others/signup.js'];
-    return res.view('user/signup');
+    return res.view('user/signup', {layout: false});
   },
 
   create: function (req, res) {

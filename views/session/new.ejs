@@ -1,20 +1,68 @@
-<form id="sign-in-form" class="form-signin" method="POST" data-toggle="validator" role="form">
-  <h2>Please sign in...</h2>
-  <!-- E M A I L -->
-  <div class="form-group">
-    <label for="inputEmail">Email address</label>
-    <input type="email" class="form-control" placeholder="Enter your email" name="email" id="inputEmail" data-error="Invalid email address" required>
-    <span class="help-block with-errors"></span>
-  </div>
-  <!-- P A S S W O R D -->
-  <div class="form-group">
-    <label for="inputPassword">Password</label>
-    <input type="password" class="form-control" placeholder="Enter your password" name="password" id="inputPassword" data-minlength="6" data-error="At least 6 characters" required>
-    <span class="help-block with-errors"></span>
-  </div>
-</div>
-<br/>
-<!-- Disable signup button until the form has no errors -->
-<button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
-<input type="hidden" name="_csrf" value="<%= _csrf %>" />
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.css">
+    <link rel="stylesheet" href="/styles/font-awesome.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/metisMenu.css">
+    <link rel="stylesheet" href="/styles/toastr.css">
+    <!--STYLES END-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Please Sign In</h3>
+            </div>
+            <div class="panel-body">
+              <form role="form" id="sign-in-form" action="POST">
+                <fieldset>
+                  <div class="form-group">
+                    <input class="form-control" placeholder="E-mail" id="inputEmail" name="email" type="email" autofocus>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" placeholder="Password" id="inputPassword" name="password" type="password" value="">
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                    </label>
+                  </div>
+                  <!-- Change this to a button or input when using this as a form -->
+                  <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/jquery-2.1.4.js"></script>
+    <script src="/js/dependencies/metisMenu.js"></script>
+    <script src="/js/dependencies/sb-admin-2.js"></script>
+    <script src="/js/dependencies/toastr.js"></script>
+    <script src="/js/dependencies/validator.js"></script>
+    <!--SCRIPTS END-->
+    <% if (scripts) { %>
+    <% for (i = 0; i < scripts.length; i++) { %>
+    <script src="<%- scripts[i] %>"></script>
+    <% } %>
+    <% } %>
+  </body>
+</html>

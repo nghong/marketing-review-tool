@@ -9,7 +9,7 @@ module.exports = {
 
   new: function (req, res) {
     res.locals.scripts = ['js/others/signin.js'];
-    return res.view('session/new');
+    return res.view('session/new', {layout: false});
   },
 
   login: function (req, res) {
