@@ -15,7 +15,7 @@ $('#sign-up-form').validator().on('submit', function (e) {
       dataType: 'json',
       encode: true
     }).done(function (data) {
-      toastr.info('Your account has been created!');
+      window.location.href = "/overview";
     }).fail(function (error) {
       toastr.error(error.responseText);
     });

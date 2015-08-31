@@ -8,6 +8,9 @@
 module.exports = {
 
   new: function (req, res) {
+    if (req.session.me) {
+      return res.redirect('/overview');
+    }
     res.locals.scripts = ['js/others/signin.js'];
     return res.view('session/new', {layout: false});
   },

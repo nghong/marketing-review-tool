@@ -48,6 +48,9 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+  DashboardController: {
+    '*': 'sessionAuth'
+  },
   PostController: {
     '*': 'sessionAuth'
   }

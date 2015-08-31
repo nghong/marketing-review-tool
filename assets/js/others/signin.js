@@ -12,7 +12,7 @@ $('#sign-in-form').validator().on('submit', function (e) {
       data: formData,
       encode: true
     }).done(function (data) {
-      toastr.info(data);
+      window.location.href = "/overview";
     }).fail(function (error) {
       toastr.error(error.responseText);
     });
