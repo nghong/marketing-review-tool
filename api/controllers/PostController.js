@@ -6,6 +6,9 @@
  */
 
 module.exports = {
-  
+  new: function (req, res) {
+    res.locals.scripts = ['../js/others/newPost.js'];
+    return res.view('post/new');
+  }
 };
 

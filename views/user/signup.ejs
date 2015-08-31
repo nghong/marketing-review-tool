@@ -34,7 +34,7 @@
                   <!-- N A M E -->
                   <div class="form-group">
                     <label for="inputName" class="control-label">Display name</label>
-                    <input type="text" class="form-control" placeholder="John Snow" name="name" id="inputName" data-error="Display name is required" required>
+                    <input type="text" class="form-control" placeholder="John Snow" name="name" id="inputName" data-error="Display name is required" autofocus required>
                     <span class="help-block with-errors"></span>
                   </div>
                   <!-- E M A I L -->
@@ -55,7 +55,6 @@
                     <input type="password" class="form-control" placeholder="retype your password" name="confirmation" id="inputConfirmation" data-match="#inputPassword" data-match-error="Password cofirmation does not match" required>
                     <span class="help-block with-errors"></span>
                   </div>
-                  <br/>
                   <!-- Disable signup button until the form has no errors -->
                   <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
                   <input type="hidden" name="_csrf" value="<%= _csrf %>" />

@@ -18,7 +18,8 @@ module.exports = {
       required: true
     },
     contentModified: {
-      type: 'boolean'
+      type: 'boolean',
+      defaultsTo: false
     },
     metaTitle: {
       type: 'string'
@@ -26,7 +27,7 @@ module.exports = {
     metaDescription: {
       type: 'string'
     },
-    facebookPost: {
+    facebookStatus: {
       type: 'text'
     },
     version: {
