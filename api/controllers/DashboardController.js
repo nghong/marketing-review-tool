@@ -6,9 +6,11 @@
  */
 
 module.exports = {
+
   home: function (req, res) {
     return res.redirect('/overview');
   },
+
 	overview: function (req, res) {
     return res.view('dashboard/overview');
   }

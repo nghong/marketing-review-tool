@@ -25,10 +25,6 @@ module.exports = {
       type: 'string',
       required: true
     },
-    lastLoggedIn: {
-      type: 'date',
-      defaultsTo: new Date()
-    },
     reviewCount: {
       type: 'integer',
       defaultsTo: 0
@@ -40,10 +36,6 @@ module.exports = {
     reviews: {
       collection: 'PostMapping',
       via: 'reviewers'
-    },
-    postsModify: {
-      collection: 'Post',
-      via: 'lastModified'
     },
     toJSON: function () {
       var user = this.toObject();

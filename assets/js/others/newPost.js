@@ -4,7 +4,7 @@ $('#new-post-form').validator().on('submit', function (e) {
     var formData = {
       'title': $('#inputTitle').val(),
       'content': $('#inputContent').val(),
-      'metaTitle': $('#inputMetaTitle').val(),
+      'metaTitle': $('#inputMetaTitle').val() || $('#inputTitle').val(),
       'metaDescription': $('#inputMetaDescription').val(),
       'facebookStatus': $('#inputFacebookStatus').val()
     };
@@ -16,9 +16,15 @@ $('#new-post-form').validator().on('submit', function (e) {
       dataType: 'json',
       encode: true
     }).done(function (data) {
-      window.location.href = '/overview';
+      noty({
+        type: 'success',
+        text: data
+      });
     }).fail(function (error) {
-      toastr.error(error.responseText);
+      noty({
+        type: 'error',
+        text: error.responseText
+      });
     });
   }
 });

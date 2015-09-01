@@ -17,7 +17,10 @@ $('#sign-up-form').validator().on('submit', function (e) {
     }).done(function (data) {
       window.location.href = "/overview";
     }).fail(function (error) {
-      toastr.error(error.responseText);
+      noty({
+        type: 'error',
+        text: error.responseText
+      });
     });
   }
 });

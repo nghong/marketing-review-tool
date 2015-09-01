@@ -30,14 +30,6 @@ module.exports = {
     facebookStatus: {
       type: 'text'
     },
-    version: {
-      type: 'datetime',
-      required: true,
-      defaultsTo: new Date()
-    },
-    lastModified: {
-      model: 'User'
-    },
     postId: {
       model: 'PostMapping'
     }

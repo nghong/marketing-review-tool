@@ -38,7 +38,8 @@ module.exports.routes = {
   'GET /signin': 'AuthController.new',
   'POST /signin': 'AuthController.login',
   'GET /signout': 'AuthController.logout',
-  'GET /overview': 'DashboardController.overview'
+  'GET /overview': 'DashboardController.overview',
+  'POST /post/new': 'PostController.create'
 
   /***************************************************************************
   *                                                                          *

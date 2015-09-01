@@ -15,20 +15,16 @@ module.exports = {
   create: function (req, res) {
     var params = req.allParams();
 
-    // Encrypt a string using the BCrypt algorithm.
-    User.create({
-      name: params.name,
-      email: params.email,
-      password: params.password,
-      lastLoggedIn: new Date()
-    }, function userCreated (err, newUser) {
+    User.create(params, function userCreated (err, newUser) {
       if (err) {
         // If this is a uniqueness error about the email attribute,
         // send back an easily parseable status code.
-        if (err.invalidAttributes && err.invalidAttributes.email &&
-            err.invalidAttributes.email[0] &&
-            err.invalidAttributes.email[0].rule === 'unique') {
-          return res.emailAddressInUse();
+        if (err.invalidAttributes.email[0].rule === 'unique') {
+          return res.send(409, 'Email address is already taken by another user.');
+        }
+
+        if (err.invalidAttributes.email[0].rule === 'email') {
+          return res.send(400, 'Your email is invalid.');
         }
 
         // Otherwise, send back something reasonable as our error response.
